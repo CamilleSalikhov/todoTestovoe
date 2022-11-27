@@ -86,24 +86,7 @@ result = [
 
   return (
     <div className="App">
-      <Switch>
-      <Route path="/" exact>
-      <button onClick={searchModalHandler} className='moduleButton showFindButton'>Find task</button>
-        {modalSearchVisible &&  <FindTodo modalHandler = {searchModalHandler} />}
-        <DragDropContext onDragEnd={handleOnDragEnd}>
-          <div className='headersTable'>
-            <h1>Queue</h1>
-            <h1>Development</h1>
-            <h1>Done</h1>
-          </div>
-         
-        </DragDropContext>
-        <button onClick={modalHandler} className='moduleButton'>Create new task</button>
-        {modalVisible && <Modal modalHandler={modalHandler} />} 
-       </Route>
-       <Route path="*" > <NotFound /> </Route>
-       </Switch>
-         
+      hewow
          
     </div>
   );
