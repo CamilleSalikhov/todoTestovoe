@@ -1,6 +1,8 @@
 import { act } from "react-dom/test-utils";
 import { ADD_TODO } from "../actions/addTodo";
 import { SET_WHOLE_STATE } from "../actions/setWholeState";
+import { DRAG_UPDATE  } from "../actions/dragUpdate";
+import { DRAG_INSIDE  } from "../actions/dragInside";
 
 
 const  initialState = {
@@ -19,10 +21,22 @@ function todoReducer(state = initialState, action) {
                 ...state,
                 queue: [...state.queue, action.payload]
             }
-        case SET_WHOLE_STATE:
-            return action.payload
-            default:
+         
+        case DRAG_UPDATE:
+            return {
+                ...state,
+                ...action.payload[0],
+                ...action.payload[1]
+            }
+
+        case DRAG_INSIDE:
+            return {
+                ...state,
+                ...action.payload
+            }
+        default:
                 return state
+                
     }
 }
 

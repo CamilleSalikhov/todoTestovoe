@@ -12,7 +12,7 @@
   flex-direction: column;
 }
 
-.createTask {
+.moduleButton {
   font: inherit;
   align-self: center;
   border-radius: 0 0 12px 12px;
@@ -23,5 +23,17 @@
   background: black;
   box-shadow: 0 0 40px -10px rgb(0 0 0 / 40%);
   cursor: pointer;
+  min-width: 25vh;
    
+}
+
+.showFindButton {
+  border-radius: 12px 12px 0 0;
+
+}
+
+.headersTable {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }

@@ -2,13 +2,18 @@ import { useState } from 'react';
 import './FindTodo.css';
 import { useSelector } from 'react-redux';
 import Todo from './Todo';
+import ModalWrapper from './ModalWrapper';
+import './Modal.css';
+import SearchResult from './SearchResult';
 
-const FindTodo = () => {
+const FindTodo = ({modalHandler}) => {
 
     const [taskNumber, setTaskNumber] = useState('');
     const [taskHeader, setTaskHeader] = useState('');
     const [searchTarget, setSearchTarget] =useState('');
-    const [pValue, setPvalue] = useState('')
+    const [pValue, setPvalue] = useState('');
+    const [searchId, setSearchId] =useState('');
+     
 
     const todoState = useSelector(state => state.todos);
      
@@ -23,7 +28,9 @@ const FindTodo = () => {
         if (!checkSearch[0]) {
             setPvalue('Не найдено!')
         } else {
-            setPvalue('Найдено!')
+            setPvalue('Найдено!');
+            setSearchId(e.id);
+             
         }
          
     };
@@ -40,6 +47,7 @@ const FindTodo = () => {
      
 
     return (
+        <ModalWrapper modalHandler = {modalHandler}>
         <div className="findContainer">
             <h1>Найти таск</h1>
             <form onSubmit={handleSearch}>
@@ -53,8 +61,9 @@ const FindTodo = () => {
                 </div>  
             </form>
              
-            {searchTarget && <Todo taskHeader = {searchTarget.taskHeader} taskNumber = {searchTarget.taskNumber} />}
+            {searchTarget && <SearchResult id={searchId} taskHeader = {searchTarget.taskHeader} taskNumber = {searchTarget.taskNumber} />}
         </div>
+        </ModalWrapper>
     )
 };
 

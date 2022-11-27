@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import './Modal.css';
 import {addTodo} from '../store/actions/addTodo';
+import ModalWrapper from './ModalWrapper';
+import {v4 as uuidv4} from 'uuid';
 
 
 
@@ -22,14 +24,15 @@ const Modal = ({modalHandler}) => {
 
 
         dispatch(addTodo({
-            taskNumber,
-            taskHeader,
-            taskDescription,
+            taskNumber : taskNumber.trim(),
+            taskHeader : taskHeader.trim(),
+            taskDescription : taskDescription,
             taskFinish,
-            taskPriority,
+            taskPriority: taskPriority.trim(),
             taskFile,
             timeStamp: Date.now(),
-            taskStatus: 'queue'
+            taskStatus: 'queue',
+            id: uuidv4()
         }));
 
         modalHandler();
@@ -98,10 +101,8 @@ const Modal = ({modalHandler}) => {
  
 
     return(
-       <div className="container">
-            <div className="content">
-                 
-                <button onClick={modalHandler}   className='closeButton' >X</button>
+        <>
+                 <ModalWrapper modalHandler ={modalHandler}>
                 <form onSubmit={handleSubmit} >
                     <div className='formItems'> 
                     <label htmlFor="taskNumber">Номер задачи</label>
@@ -156,8 +157,8 @@ const Modal = ({modalHandler}) => {
                     </div>
                 </div>
                 </form>
-            </div>
-        </div>
+                </ModalWrapper>
+        </>
         
         
 
