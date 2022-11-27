@@ -14,14 +14,15 @@ function App() {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalSearchVisible, setModalSearchVisible] = useState(false);
   const state = useSelector(state => state.todos);
+  const globalState = useSelector(state => state)
   const dispatch = useDispatch();
 
    
 
   useEffect(() => {
-      localStorage.setItem('MY_APP_STATE', JSON.stringify(state));
+      localStorage.setItem('MY_APP_STATE', JSON.stringify(globalState));
 
-  },[state]);
+  },[globalState]);
 
    const modalHandler = () => {
     setModalVisible((prevState) => {
