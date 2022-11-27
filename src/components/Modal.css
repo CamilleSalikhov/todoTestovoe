@@ -1,0 +1,75 @@
+.container {
+    position: fixed;
+	width: 100%;
+	height: 100%;
+	background: rgba(100, 98, 98, 0.5);
+	z-index: 1000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	 
+	
+}
+
+.content {
+    background-color: white;
+	width: 35%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding:0 0  2rem 0;
+	border-radius: 0px  0px 8px 8px;
+	 
+	
+	
+	 
+}
+
+.closeButton {
+	align-self: flex-end;
+	
+
+}
+
+.closeButton:hover {
+	cursor: pointer;
+}
+
+.submitButton {
+	font: inherit;
+   align-self: center;
+  border-radius: 0 0 12px 12px;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid black;
+  color: white;
+  margin-top: 2vh;
+  background: black;
+  box-shadow: 0 0 40px -10px rgb(0 0 0 / 40%);
+  cursor: pointer;
+}
+
+
+.formItems {
+	display: flex;
+	flex-direction: column;
+}
+ 
+.formSubmit {
+	align-self: center;
+}
+label {
+	margin-bottom: 1vh;
+}
+
+.uploadLabel {
+	margin-top: 1vh;
+	border: 1px solid black;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.fileInputDesc {
+	text-align: center;
+}
