@@ -5,6 +5,7 @@
   min-height: 60vh;
   margin-top: 1vh;
   
+  
 }
 
 .App {
@@ -41,6 +42,6 @@
 .headersTable p {
   font-size: 3vh;
   display: flex;
-  
+
    
 }

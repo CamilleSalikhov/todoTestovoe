@@ -9,8 +9,20 @@
     background-color: #fff;
     display: flex;
     flex-direction: row;
+    
+
     flex-basis: 8vh;
-    flex-shrink: 0;
+     
+}
+
+@media (max-width:400px) {
+    .todoItem {
+        max-width: 13vh;
+         
+    }
+    
+
+    
 }
 
 .todoItem:hover {
