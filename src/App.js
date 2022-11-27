@@ -1,4 +1,4 @@
- 
+import './App.css';
 import Table from './components/Table';  
 import Modal from './components/Modal';
 import NotFound from './components/NotFound';
@@ -96,11 +96,7 @@ result = [
             <h1>Development</h1>
             <h1>Done</h1>
           </div>
-        <div className=' table-container' >
-          <Table status = 'queue' />
-          <Table status = 'development' />
-          <Table status = 'done' /> 
-        </div>
+         
         </DragDropContext>
         <button onClick={modalHandler} className='moduleButton'>Create new task</button>
         {modalVisible && <Modal modalHandler={modalHandler} />} 
