@@ -17,7 +17,9 @@
 
 @media (max-width:400px) {
     .todoItem {
-        max-width: 13vh;
+        max-width:inherit;
+        padding: 0;
+         
          
     }
     
