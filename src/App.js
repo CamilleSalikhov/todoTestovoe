@@ -22,7 +22,7 @@ function App() {
   useEffect(() => {
       localStorage.setItem('MY_APP_STATE', JSON.stringify(globalState));
 
-  },[globalState]);
+  },[globalState]); 
 
    const modalHandler = () => {
     setModalVisible((prevState) => {
