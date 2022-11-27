@@ -59,7 +59,7 @@ const Table = ({status}) => {
           
     </Droppable>
         
-    )
+    ) 
 }
 
 export default Table;
