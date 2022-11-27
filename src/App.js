@@ -89,7 +89,7 @@ result = [
       <Switch>
       <Route path="/" exact>
       <button onClick={searchModalHandler} className='moduleButton showFindButton'>Find task</button>
-        {modalSearchVisible &&  <FindTodo modalHandler = {searchModalHandler} />}
+         
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <div className='headersTable'>
             <h1>Queue</h1>
@@ -103,7 +103,7 @@ result = [
         </div>
         </DragDropContext>
         <button onClick={modalHandler} className='moduleButton'>Create new task</button>
-        {modalVisible && <Modal modalHandler={modalHandler} />} 
+        
        </Route>
        <Route path="*" > <NotFound /> </Route>
        </Switch>
