@@ -1,9 +1,10 @@
 .table {
-    flex-basis: 20%;
+    flex-basis: 20vh;
     background-color: #fff;
     border-radius: 0 0 12px 12px;
     padding: 15px 15px 20px;
     box-shadow: 0 0 40px -10px rgb(0 0 0 / 40%);
-     
+    max-width: 20vh;
+    flex-shrink: 0;
      
 }

@@ -38,6 +38,9 @@
   justify-content: space-evenly;
 }
 
-.h1 {
-  background-color: red;
+.headersTable p {
+  font-size: 3vh;
+  display: flex;
+  
+   
 }

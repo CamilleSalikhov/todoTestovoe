@@ -92,9 +92,9 @@ result = [
         {modalSearchVisible &&  <FindTodo modalHandler = {searchModalHandler} />}
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <div className='headersTable'>
-            <h1>Queue</h1>
-            <h1>Development</h1>
-            <h1>Done</h1>
+            <div>Queue</div>
+            <div>Development</div>
+            <div>Done</div>
           </div>
         <div className=' table-container' >
           <Table status = 'queue' />
