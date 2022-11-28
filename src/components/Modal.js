@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './Modal.css';
 import {addTodo} from '../store/actions/addTodo';
 import ModalWrapper from './ModalWrapper';
 import {v4 as uuidv4} from 'uuid';
+import { changeTask } from '../store/actions/changeTask';
 
 
 
-const Modal = ({modalHandler}) => {
+const Modal = ({modalHandler, type, id, pageTask}) => {
     const [taskNumber, setTaskNumber] = useState('');
     const [taskHeader, setTaskHeader] = useState('');
     const [taskDescription, setTaskDescription] = useState('');
@@ -15,11 +16,13 @@ const Modal = ({modalHandler}) => {
     const [taskPriority, setTaskPriority] = useState('');
     const [taskFile, setTaskFile] = useState("Файл не выбран");
 
+     
+
     const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('submit');
+         
         
 
 
@@ -32,7 +35,8 @@ const Modal = ({modalHandler}) => {
             taskFile,
             timeStamp: Date.now(),
             taskStatus: 'queue',
-            id: uuidv4()
+            id: uuidv4(),
+            subTasks:[]
         }));
 
         modalHandler();
@@ -41,6 +45,41 @@ const Modal = ({modalHandler}) => {
 
 
     };
+
+    const handleTaskChange = (e) => {
+        e.preventDefault();
+
+
+        dispatch(changeTask({
+            taskNumber : taskNumber.trim(),
+            taskHeader : taskHeader.trim(),
+            taskDescription : taskDescription,
+            taskFinish,
+            taskPriority: taskPriority.trim(),
+            taskFile,
+            timeStamp: pageTask.timeStamp,
+            taskStatus: pageTask.taskStatus,
+            id: pageTask.id,
+            subTasks:pageTask.subTasks
+        }));
+
+        modalHandler();
+
+
+
+
+
+         
+    };
+
+    const handleSubtask = (e) => {
+        e.preventDefault();
+        console.log('modal js handleSubtask')
+    }
+
+
+
+
 
     const handleNumber = (e) => {
         setTaskNumber(e.target.value)
@@ -97,13 +136,27 @@ const Modal = ({modalHandler}) => {
 
     };
 
+    let currentHandler = '';
+    let buttonValue = 'button';
+    if (type === 'add') {
+        currentHandler = handleSubmit;
+        buttonValue = "Add todo";
+    } else if (type === 'change') {
+        currentHandler = handleTaskChange;
+        buttonValue = "Change";
+    } else if (type === 'subtask') {
+        currentHandler = handleSubtask;
+        buttonValue = "SubTask"
+    }
 
- 
+     
+
+     
 
     return(
         <>
                  <ModalWrapper modalHandler ={modalHandler}>
-                <form onSubmit={handleSubmit} >
+                <form onSubmit={currentHandler} >
                     <div className='formItems'> 
                     <label htmlFor="taskNumber">Номер задачи</label>
                     <input
@@ -153,7 +206,7 @@ const Modal = ({modalHandler}) => {
 
  
                     <div className='formSubmit'>
-                    <button className='submitButton' type='sumbit'>Add todo</button>
+                    <button className='submitButton' type='sumbit'>{buttonValue}</button>
                     </div>
                 </div>
                 </form>

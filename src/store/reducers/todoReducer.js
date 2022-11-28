@@ -3,6 +3,7 @@ import { ADD_TODO } from "../actions/addTodo";
 import { SET_WHOLE_STATE } from "../actions/setWholeState";
 import { DRAG_UPDATE  } from "../actions/dragUpdate";
 import { DRAG_INSIDE  } from "../actions/dragInside";
+import { CHANGE_TASK } from "../actions/changeTask";
 
 
 const  initialState = {
@@ -16,7 +17,6 @@ const  initialState = {
 function todoReducer(state = initialState, action) {
     switch(action.type) {
         case ADD_TODO:
-            console.log(state )
             return {
                 ...state,
                 queue: [...state.queue, action.payload]
@@ -33,6 +33,15 @@ function todoReducer(state = initialState, action) {
             return {
                 ...state,
                 ...action.payload
+            }
+        case CHANGE_TASK:
+            return {
+                ...state,
+                [action.payload.taskStatus]: state[action.payload.taskStatus].map(
+                    (element) => element.id === action.payload.id ? action.payload : element 
+
+
+                )
             }
         default:
                 return state

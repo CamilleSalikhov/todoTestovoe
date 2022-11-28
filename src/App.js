@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { dragUpdate, DRAG_UPDATE } from './store/actions/dragUpdate';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { dragInside } from './store/actions/dragInside';
+import TaskPage from './components/TaskPage';
 
 function App() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -38,7 +39,6 @@ function App() {
 
 
    const handleOnDragEnd = ( e) => {
-    console.log(e)
     if (!e.destination) return;
     const dragSource = e.source.droppableId.slice(2);
      
@@ -50,26 +50,26 @@ const dragFrom = Array.from(state[dragSource]);
 //console.log(state[dragDestination], 'state[dragDestination')
 //console.log(dragFrom, 'dragFrom')
 //console.log(state )
-console.log(dragDestination, dragSource)
+
 if (dragDestination === dragSource) {
-  console.log('внутри')
   const [cutOutItem] =dragFrom.splice(e.source.index, 1);
   dragFrom.splice(e.destination.index, 0 , cutOutItem)
   dispatch(dragInside({[dragSource]:dragFrom}))
 } else {
 
-const [cutOutItem] = state[dragSource].splice(e.source.index, 1);
+let [cutOutItem] = state[dragSource].splice(e.source.index, 1);
+cutOutItem.taskStatus  =  dragDestination;
 //todoItems.splice(e.destination.index, 0, cutOutItem);
 const dragFromResult = dragFrom.filter((element, index) => {
   return index !== e.source.index
 })
 //console.log(dragTo, 'dragto')
  dragTo.splice(e.destination.index, 0, cutOutItem);
- console.log(dragTo, 'dragto')
-console.log(dragSource, dragFromResult, dragDestination, dragTo)
+ 
+
 let result = []
  
-  console.log('снаружи')
+  
 
 
 result = [
@@ -103,7 +103,10 @@ result = [
         </div>
         </DragDropContext>
         <button onClick={modalHandler} className='moduleButton'>Create new task</button>
-        {modalVisible && <Modal modalHandler={modalHandler} />} 
+        {modalVisible && <Modal type='add' modalHandler={modalHandler} />} 
+       </Route>
+       <Route path = {'/tasks/:taskId'}>
+        <TaskPage />
        </Route>
        <Route path="*" > <NotFound /> </Route>
        </Switch>

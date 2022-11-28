@@ -32,7 +32,11 @@
 
 .closeButton {
 	align-self: flex-end;
-	
+	width: auto;
+	background-color: black;
+	color: white;
+	font-weight: bold;
+	margin: 0;
 
 }
 
