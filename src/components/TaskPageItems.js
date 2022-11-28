@@ -1,4 +1,4 @@
-const TaskPageItems = ({pageTask, timestampToString, timePassed}) => {
+const TaskPageItems = ({pageTask, timestampToString, timePassed, type}) => {
     return (
         <div className="taskPageItems" >
                 <div>Номер задачи: {pageTask.taskNumber}</div>
@@ -9,7 +9,7 @@ const TaskPageItems = ({pageTask, timestampToString, timePassed}) => {
                 <div>Дата окончания: {pageTask.taskFinish}</div>
                 <div>Приоритет: {pageTask.taskPriority}</div>
                 <div>Вложенные файлы: {pageTask.TaskFile}</div>
-                <div>Текущий статус: {pageTask.taskStatus}</div>
+                {!(type === 'subtask') && <div>Текущий статус: {pageTask.taskStatus}</div>}
 
 
 

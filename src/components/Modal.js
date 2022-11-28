@@ -85,7 +85,6 @@ const Modal = ({modalHandler, type, id, pageTask}) => {
             taskPriority: taskPriority.trim(),
             timeStamp: Date.now(),
             id,
-            taskStatus:pageTask.taskStatus,
             parentStatus:pageTask.taskStatus
         }));
 

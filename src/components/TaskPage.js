@@ -78,7 +78,7 @@ const TaskPage = () => {
 
 
     const renderSubTasks = pageTask.subTasks.map(
-        (e, index) => <TaskPageItems key={uuid4()} pageTask={pageTask.subTasks[index]} timestampToString={timestampToString} timePassed ={timePassed} />
+        (e, index) => <TaskPageItems type = 'subtask' key={uuid4()} pageTask={pageTask.subTasks[index]} timestampToString={timestampToString} timePassed ={timePassed} />
     )
 
     return(
