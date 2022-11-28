@@ -1,6 +1,7 @@
 import './App.css';
 import Table from './components/Table';  
 import Modal from './components/Modal';
+import './components/TaskPage.css'
 import NotFound from './components/NotFound';
 import { Route, Switch } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -88,13 +89,12 @@ result = [
     <div className="App">
       <Switch>
       <Route path="/" exact>
-      <button onClick={searchModalHandler} className='moduleButton showFindButton'>Find task</button>
         {modalSearchVisible &&  <FindTodo modalHandler = {searchModalHandler} />}
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <div className='headersTable'>
-            <div>Queue</div>
-            <div>Development</div>
-            <div>Done</div>
+            <h1>Queue</h1>
+            <h1>Development</h1>
+            <h1>Done</h1>
           </div>
         <div className=' table-container' >
           <Table status = 'queue' />
@@ -102,7 +102,10 @@ result = [
           <Table status = 'done' /> 
         </div>
         </DragDropContext>
+        <div className='buttonContainer'> 
         <button onClick={modalHandler} className='moduleButton'>Create new task</button>
+        <button onClick={searchModalHandler} className='moduleButton showFindButton'>Find task</button>
+        </div>
         {modalVisible && <Modal type='add' modalHandler={modalHandler} />} 
        </Route>
        <Route path = {'/tasks/:taskId'}>

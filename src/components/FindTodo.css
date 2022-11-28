@@ -25,6 +25,14 @@
   cursor: pointer;
 }
 
+.submitSearch:active {
+    background-color:rgb(68, 66, 66);
+     
+     
+}
+
+
+
 label {
     font: inherit;    
 }

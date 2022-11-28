@@ -1,0 +1,13 @@
+.postItems {
+    display: flex;
+    flex-direction: column;
+}
+
+.formButtons {
+    display: flex;
+    flex-direction: row;   
+}
+
+.formButtons button {
+    margin-left: 0;
+}

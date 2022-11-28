@@ -6,6 +6,7 @@ import { useState } from "react";
 import Modal from "./Modal";
 import TaskPageItems from "./TaskPageItems";
 import { v4 as uuid4 } from "uuid";
+import Comments from "./Сomments";
 
 const TaskPage = () => {
     const location = useLocation();
@@ -81,6 +82,7 @@ const TaskPage = () => {
     )
 
     return(
+        <>
         <div className="taskPageContainer">
              {modalVisible && <Modal type= "change" pageTask={pageTask} modalHandler={modalHandler} />} 
              {subtaskVisible && <Modal   id={id} pageTask={pageTask} type= "subtask" modalHandler={subtaskHandler} />} 
@@ -94,10 +96,14 @@ const TaskPage = () => {
             
             <p>Здесь будут ваши дополнительные задачи</p>
              {renderSubTasks}
+
+              
              
              
             
         </div>
+        <Comments pageTask = {pageTask} />
+        </>
     )
 }
 

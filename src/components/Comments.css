@@ -1,0 +1,19 @@
+.commentsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.commentsContainer h1 {
+    align-self: center;
+}
+
+.commentsFormCOntainer {
+    align-self: center;
+
+}
+
+
+.commentsItemsContainer {
+    align-self: center;
+}

@@ -85,6 +85,7 @@ const Modal = ({modalHandler, type, id, pageTask}) => {
             taskPriority: taskPriority.trim(),
             timeStamp: Date.now(),
             id,
+            taskStatus:pageTask.taskStatus,
             parentStatus:pageTask.taskStatus
         }));
 
@@ -180,6 +181,7 @@ const Modal = ({modalHandler, type, id, pageTask}) => {
                     <div className='formItems'> 
                     <label htmlFor="taskNumber">Номер задачи</label>
                     <input
+                    required
                     type="text"
                     id="taskNumber"
                     value={taskNumber}
@@ -187,6 +189,7 @@ const Modal = ({modalHandler, type, id, pageTask}) => {
                     /> 
                     <label htmlFor="taskHeader">Заголовок</label>
                     <input
+                    required
                     type="text"
                     id="taskHeader"
                     value={taskHeader}
@@ -201,6 +204,7 @@ const Modal = ({modalHandler, type, id, pageTask}) => {
                     /> 
                     <label htmlFor="taskDeadline">Дата окончания</label>
                     <input
+                    required
                     type="date"
                     id="taskDeadline"
                     value={taskFinish}
@@ -208,6 +212,7 @@ const Modal = ({modalHandler, type, id, pageTask}) => {
                     /> 
                     <label htmlFor="taskPriority">Приоритет</label>
                     <input
+                    required
                     type="text"
                     id="taskPriority"
                     value={taskPriority}
