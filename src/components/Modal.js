@@ -5,6 +5,7 @@ import {addTodo} from '../store/actions/addTodo';
 import ModalWrapper from './ModalWrapper';
 import {v4 as uuidv4} from 'uuid';
 import { changeTask } from '../store/actions/changeTask';
+import { addSubtask } from '../store/actions/addSubtask';
 
 
 
@@ -15,7 +16,7 @@ const Modal = ({modalHandler, type, id, pageTask}) => {
     const [taskFinish, setTaskFinish] = useState('');
     const [taskPriority, setTaskPriority] = useState('');
     const [taskFile, setTaskFile] = useState("Файл не выбран");
-
+     
      
 
     const dispatch = useDispatch();
@@ -74,7 +75,26 @@ const Modal = ({modalHandler, type, id, pageTask}) => {
 
     const handleSubtask = (e) => {
         e.preventDefault();
-        console.log('modal js handleSubtask')
+         
+
+        dispatch(addSubtask({
+            taskNumber : taskNumber.trim(),
+            taskHeader : taskHeader.trim(),
+            taskDescription : taskDescription,
+            taskFinish,
+            taskPriority: taskPriority.trim(),
+            timeStamp: Date.now(),
+            id,
+            parentStatus:pageTask.taskStatus
+        }));
+
+        modalHandler()
+
+
+
+
+
+
     }
 
 
@@ -193,6 +213,8 @@ const Modal = ({modalHandler, type, id, pageTask}) => {
                     value={taskPriority}
                     onChange={handlePriority}
                     /> 
+
+                    {(type === "add" || type === "change") && <>
                     <label className='uploadLabel' htmlFor="taskFiles">
                     Добавить файлы            
                     </label>
@@ -202,7 +224,8 @@ const Modal = ({modalHandler, type, id, pageTask}) => {
                     id="taskFiles"
                     onChange={handleFiles}
                     hidden
-                    /> 
+                    />
+                    </>}
 
  
                     <div className='formSubmit'>

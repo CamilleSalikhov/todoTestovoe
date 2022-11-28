@@ -17,19 +17,20 @@ const FindTodo = ({modalHandler}) => {
 
     const todoState = useSelector(state => state.todos);
      
-    const todoArray = todoState.queue.concat(todoState.development, todoState.done);
+    const todoArray = [].concat(todoState.development, todoState.done, todoState.queue);
 
 
     const handleSearch = (e) => {
         e.preventDefault();
-        const checkSearch = todoArray.filter(e => e.taskHeader === taskHeader && e.taskNumber === taskNumber);
-        setSearchTarget(checkSearch[0]) ;
-        console.log(checkSearch)
-        if (!checkSearch[0]) {
-            setPvalue('Не найдено!')
+        const checkSearch = todoArray.find(e => e.taskHeader === taskHeader.trim() && e.taskNumber === taskNumber.trim());
+         
+        if (!checkSearch) {
+            setPvalue('Не найдено!');
+            setSearchTarget('')
         } else {
             setPvalue('Найдено!');
-            setSearchId(e.id);
+            setSearchId(checkSearch.id);
+            setSearchTarget(checkSearch);
              
         }
          
@@ -44,7 +45,7 @@ const FindTodo = ({modalHandler}) => {
         setTaskHeader(e.target.value)
     }
 
-     
+    
 
     return (
         <ModalWrapper modalHandler = {modalHandler}>
@@ -61,7 +62,7 @@ const FindTodo = ({modalHandler}) => {
                 </div>  
             </form>
              
-            {searchTarget && <SearchResult id={searchId} taskHeader = {searchTarget.taskHeader} taskNumber = {searchTarget.taskNumber} />}
+            {searchTarget && <SearchResult modalHandler = {modalHandler} id={searchId} taskHeader = {searchTarget.taskHeader} taskNumber = {searchTarget.taskNumber} />}
         </div>
         </ModalWrapper>
     )

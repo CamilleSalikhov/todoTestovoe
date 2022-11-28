@@ -4,6 +4,7 @@ import { SET_WHOLE_STATE } from "../actions/setWholeState";
 import { DRAG_UPDATE  } from "../actions/dragUpdate";
 import { DRAG_INSIDE  } from "../actions/dragInside";
 import { CHANGE_TASK } from "../actions/changeTask";
+import { ADD_SUBTASK } from "../actions/addSubtask";
 
 
 const  initialState = {
@@ -42,6 +43,14 @@ function todoReducer(state = initialState, action) {
 
 
                 )
+            }
+        case ADD_SUBTASK:
+            return {
+                ...state,
+                [action.payload.parentStatus]: state[action.payload.parentStatus].map(
+                    (element) => element.id === action.payload.id ? {...element,
+                        subTasks: [...element.subTasks, action.payload] } : element)
+
             }
         default:
                 return state

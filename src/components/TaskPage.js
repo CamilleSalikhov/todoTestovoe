@@ -1,19 +1,22 @@
-import { useParams,  useHistory } from "react-router-dom";
+import { useParams,  useHistory, useLocation } from "react-router-dom";
 import "./Modal.css";
 import "./TaskPage.css"
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import Modal from "./Modal";
+import TaskPageItems from "./TaskPageItems";
+import { v4 as uuid4 } from "uuid";
 
 const TaskPage = () => {
-
+    const location = useLocation();
+     
     const [modalVisible, setModalVisible] = useState(false);
     const [subtaskVisible, setSubtaskVisible] = useState(false);
 
 
     const params = useParams();
     const history = useHistory();
-    const id = params.taskId;
+    const id = params.taskId || location.state;
     const state = useSelector(state => state.todos)
     const stateArray = [...state.queue, ...state.development, ...state.done];
     const pageTask = stateArray.find(e => e.id === id);
@@ -72,39 +75,25 @@ const TaskPage = () => {
 
     const timePassed = calculateTime(pageTask.timeStamp);
 
+
+    const renderSubTasks = pageTask.subTasks.map(
+        (e, index) => <TaskPageItems key={uuid4()} pageTask={pageTask.subTasks[index]} timestampToString={timestampToString} timePassed ={timePassed} />
+    )
+
     return(
         <div className="taskPageContainer">
              {modalVisible && <Modal type= "change" pageTask={pageTask} modalHandler={modalHandler} />} 
-             {subtaskVisible && <Modal   id={id} type= "subtask" modalHandler={subtaskHandler} />} 
+             {subtaskVisible && <Modal   id={id} pageTask={pageTask} type= "subtask" modalHandler={subtaskHandler} />} 
             <div className="buttonContainer">
             <button className="submitSearch" onClick={modalHandler}    >Change</button>
             <button className="submitSearch" onClick={setSubtaskVisible}   >Subtask</button>
             <button className="submitSearch" onClick={handleBack}>Back</button>
              
             </div>
-             
-            <div className="taskPageItems" >
-                <div>Номер задачи: {pageTask.taskNumber}</div>
-                <div>Заголовок: {pageTask.taskHeader}</div>
-                <div>Описание:<p>{pageTask.taskDescription}</p></div>
-                <div>Дата создания: {timestampToString(pageTask.timeStamp)}</div>
-                <div>Время в работе: {timePassed.secDiff + " секунд " + timePassed.minDiff + " минут " + timePassed.hourDiff + " часов "}</div>
-                <div>Дата окончания: {pageTask.taskFinish}</div>
-                <div>Приоритет: {pageTask.taskPriority}</div>
-                <div>Вложенные файлы: {pageTask.TaskFile}</div>
-                <div>Текущий статус: {pageTask.taskStatus}</div>
-
-
-
-
-
-
-
-
-
-
-
-            </div>
+            <TaskPageItems pageTask={pageTask} timestampToString={timestampToString} timePassed ={timePassed} />
+            
+            <p>Здесь будут ваши дополнительные задачи</p>
+             {renderSubTasks}
              
              
             
