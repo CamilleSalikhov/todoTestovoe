@@ -26,7 +26,10 @@
   cursor: pointer;
   min-width: 25vh;
    
+   
 }
+
+ 
 
  
 
@@ -36,4 +39,13 @@
   justify-content: space-evenly;
 }
 
+button {
+  transition: transform 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98), box-shadow 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
+
+}
+
+button:hover {
+  transform: scale(1.01);
+  box-shadow: 0 9px 47px 11px rgba(250, 244, 244, 0.18);
+}
  

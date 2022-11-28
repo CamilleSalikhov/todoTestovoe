@@ -1,4 +1,7 @@
 const TaskPageItems = ({pageTask, timestampToString, timePassed, type}) => {
+    console.log(pageTask.taskFile)
+     
+
     return (
         <div className="taskPageItems" >
                 <div>Номер задачи: {pageTask.taskNumber}</div>
@@ -8,8 +11,8 @@ const TaskPageItems = ({pageTask, timestampToString, timePassed, type}) => {
                 <div>Время в работе: {timePassed.secDiff + " секунд " + timePassed.minDiff + " минут " + timePassed.hourDiff + " часов "}</div>
                 <div>Дата окончания: {pageTask.taskFinish}</div>
                 <div>Приоритет: {pageTask.taskPriority}</div>
-                <div>Вложенные файлы: {pageTask.TaskFile}</div>
                 {!(type === 'subtask') && <div>Текущий статус: {pageTask.taskStatus}</div>}
+                <a target='_blank' href={pageTask.taskFile}>Загрузить вложенные файлы:</a>
 
 
 

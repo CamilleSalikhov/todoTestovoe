@@ -16,6 +16,7 @@ const Modal = ({modalHandler, type, id, pageTask}) => {
     const [taskFinish, setTaskFinish] = useState('');
     const [taskPriority, setTaskPriority] = useState('');
     const [taskFile, setTaskFile] = useState("Файл не выбран");
+    const [fileName, setFileName] = useState('')
      
      
 
@@ -49,7 +50,7 @@ const Modal = ({modalHandler, type, id, pageTask}) => {
 
     const handleTaskChange = (e) => {
         e.preventDefault();
-
+        const currentFile = (taskFile ? taskFile : pageTask.taskFile)
 
         dispatch(changeTask({
             taskNumber : taskNumber.trim(),
@@ -57,7 +58,7 @@ const Modal = ({modalHandler, type, id, pageTask}) => {
             taskDescription : taskDescription,
             taskFinish,
             taskPriority: taskPriority.trim(),
-            taskFile,
+            taskFile:currentFile,
             timeStamp: pageTask.timeStamp,
             taskStatus: pageTask.taskStatus,
             id: pageTask.id,
@@ -85,7 +86,8 @@ const Modal = ({modalHandler, type, id, pageTask}) => {
             taskPriority: taskPriority.trim(),
             timeStamp: Date.now(),
             id,
-            parentStatus:pageTask.taskStatus
+            parentStatus:pageTask.taskStatus,
+            taskFile
         }));
 
         modalHandler()
@@ -149,9 +151,10 @@ const Modal = ({modalHandler, type, id, pageTask}) => {
     };
 
     const handleFiles = (e) => {
-        let files = [];
+        const objUrl = URL.createObjectURL(e.target.files[0]);
         //console.log(e.target.files[0]);
-        setTaskFile(e.target.files[0]);
+        setTaskFile(objUrl);
+        setFileName(e.target.files[0].name)
          
 
     };
@@ -218,18 +221,18 @@ const Modal = ({modalHandler, type, id, pageTask}) => {
                     onChange={handlePriority}
                     /> 
 
-                    {(type === "add" || type === "change") && <>
+                     
                     <label className='uploadLabel' htmlFor="taskFiles">
                     Добавить файлы            
                     </label>
-                    <span className='fileInputDesc'  id="file-chosen">{ taskFile.name} </span>
+                    <span className='fileInputDesc'  id="file-chosen">{fileName} </span>
                     <input
                     type="file"
                     id="taskFiles"
-                    onChange={handleFiles}
+                    onChange={handleFiles} 
                     hidden
                     />
-                    </>}
+                     
 
  
                     <div className='formSubmit'>

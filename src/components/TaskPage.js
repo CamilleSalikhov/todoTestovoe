@@ -22,12 +22,16 @@ const TaskPage = () => {
     const stateArray = [...state.queue, ...state.development, ...state.done];
     const pageTask = stateArray.find(e => e.id === id);
     
+    if(!pageTask) {
+        history.push('/notfound');
+         
+    }
  
      
      
 
     const handleBack = () => {
-        history.push('/');
+        history.push('/tasks');
     };
 
 

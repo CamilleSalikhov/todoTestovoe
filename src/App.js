@@ -3,7 +3,7 @@ import Table from './components/Table';
 import Modal from './components/Modal';
 import './components/TaskPage.css'
 import NotFound from './components/NotFound';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import FindTodo from './components/FindTodo';
 import { useSelector, useDispatch } from 'react-redux';
@@ -88,7 +88,10 @@ result = [
   return (
     <div className="App">
       <Switch>
-      <Route path="/" exact>
+        <Route path='/' exact>
+        <Redirect to="/tasks" />  
+        </Route>
+      <Route path="/tasks" exact>
         {modalSearchVisible &&  <FindTodo modalHandler = {searchModalHandler} />}
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <div className='headersTable'>

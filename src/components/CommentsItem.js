@@ -19,7 +19,7 @@ const replies = useSelector(state => {
     return result
 })
 
-console.log(replies, 'replies')
+ 
 
 
 const [replyVisible,setReplyVisible] = useState(false);
