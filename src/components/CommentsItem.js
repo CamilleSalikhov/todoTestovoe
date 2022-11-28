@@ -66,7 +66,7 @@ if (replies[0]) {
     hasReplies = {e.parentId ? true : false}/>
      );
 
-     replyComponents =<div style={{color:"red", display:' flex', flexDirection:"row"}}>
+     replyComponents =<div style={{color:"red", display:' flex', flexDirection:"row"}}  >
         {replyComponentsMap}
      </div>
 }
@@ -76,6 +76,7 @@ if (replies[0]) {
     
 
     return (<>
+    <div className='comment1'>
         <div className="commentItem">
         <img src="https://static.vecteezy.com/system/resources/thumbnails/005/545/335/small/user-sign-icon-person-symbol-human-avatar-isolated-on-white-backogrund-vector.jpg" 
         alt="userpic" />
@@ -91,6 +92,7 @@ if (replies[0]) {
          
         {replyVisible && <CommentsForm item ={item} type = 'reply' closeReply={closeReply} id={item.pageId} />}
         {replyComponents}
+    </div>
         </>
     )
 }
