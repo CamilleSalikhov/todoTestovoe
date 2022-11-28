@@ -9,7 +9,7 @@
 
 
 
-const CommentsItem = ({item, hasReplies}) => {
+const CommentsItem = ({item, hasReplies, level}) => {
 
 
 
@@ -61,12 +61,13 @@ if (replies[0]) {
      
         
      <CommentsItem
+    level={++level}
     key = {uuid4()}
     item ={e} 
     hasReplies = {e.parentId ? true : false}/>
      );
 
-     replyComponents =<div style={{color:"red", display:' flex', flexDirection:"row"}}  >
+     replyComponents =<div style={{color:"#d7385e", display:' flex', flexDirection:"column", marginLeft: `${10 + 3*level}px` }}  >
         {replyComponentsMap}
      </div>
 }

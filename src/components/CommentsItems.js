@@ -9,6 +9,7 @@ const CommentsItems = ({id : pageId}) => {
     // console.log(comments, 'comments');
     const commentComponents = comments.map(e =>
     <CommentsItem 
+    level = {20}
     key = {uuidv4()} 
     item = {e}
     hasReplies = {e.parentId ? true : false} 

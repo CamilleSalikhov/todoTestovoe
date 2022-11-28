@@ -8,10 +8,10 @@
    
     background-color: #fff;
     
-    padding: 10px 5px 10px 0px;
+    padding: 10px 5px 1vh 0px;
     box-shadow: 0 0 40px -10px rgb(0 0 0 / 40%); 
      
-    
+    margin-right: 1vh;
     margin-top: 3vh;
     max-width: 50vh;
     min-width: 50vh;
