@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import './FindTodo.css';
 import { useSelector } from 'react-redux';
-import Todo from './Todo';
 import ModalWrapper from './ModalWrapper';
 import './Modal.css';
 import SearchResult from './SearchResult';

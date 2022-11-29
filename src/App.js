@@ -44,13 +44,10 @@ function App() {
     const dragSource = e.source.droppableId.slice(2);
      
     const dragDestination = e.destination.droppableId.slice(2);
-    //console.log(e.source, 'e.source')
-    //console.log(  state[dragSource],'state[dragSource]')
+     
 const dragTo = Array.from(state[dragDestination]);
 const dragFrom = Array.from(state[dragSource]);
-//console.log(state[dragDestination], 'state[dragDestination')
-//console.log(dragFrom, 'dragFrom')
-//console.log(state )
+ 
 
 if (dragDestination === dragSource) {
   const [cutOutItem] =dragFrom.splice(e.source.index, 1);
@@ -60,11 +57,11 @@ if (dragDestination === dragSource) {
 
 let [cutOutItem] = state[dragSource].splice(e.source.index, 1);
 cutOutItem.taskStatus  =  dragDestination;
-//todoItems.splice(e.destination.index, 0, cutOutItem);
+ 
 const dragFromResult = dragFrom.filter((element, index) => {
   return index !== e.source.index
 })
-//console.log(dragTo, 'dragto')
+ 
  dragTo.splice(e.destination.index, 0, cutOutItem);
  
 

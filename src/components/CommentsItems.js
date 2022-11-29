@@ -6,7 +6,7 @@ import "./CommentsItems.css"
 
 const CommentsItems = ({id : pageId}) => {
     const comments = useSelector(state => state.comments.filter(e => e.pageId === pageId && e.parentId === null));
-    // console.log(comments, 'comments');
+     
     const commentComponents = comments.map(e =>
     <CommentsItem 
     level = {20}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import './Modal.css';
 import {addTodo} from '../store/actions/addTodo';
 import ModalWrapper from './ModalWrapper';
@@ -152,7 +152,7 @@ const Modal = ({modalHandler, type, id, pageTask}) => {
 
     const handleFiles = (e) => {
         const objUrl = URL.createObjectURL(e.target.files[0]);
-        //console.log(e.target.files[0]);
+        
         setTaskFile(objUrl);
         setFileName(e.target.files[0].name)
          
