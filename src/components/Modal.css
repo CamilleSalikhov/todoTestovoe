@@ -22,11 +22,29 @@
 	 
 	padding:1rem 1rem  2rem 1rem;
 	border-radius: 0px  0px 8px 8px;
-	 
-	
+	   
+
+
+	animation-duration: 1s;
+  animation-name: slidein;
 	
 	 
 }
+
+
+
+@keyframes slidein {
+	from {
+	  margin-bottom: 100%;
+	  opacity: 0.5;
+	   
+	}
+  
+	to {
+	  margin-top: 0%;
+	  opacity: 1;
+	}
+  }
 
  
 
