@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import './Modal.css';
-import {addTodo} from '../store/actions/addTodo';
 
 
 

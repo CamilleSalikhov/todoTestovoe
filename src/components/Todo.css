@@ -22,10 +22,11 @@
      
 }
 
-@media (max-width:400px) {
+@media (max-width:768px) {
     .todoItem {
         max-width:inherit;
         padding: 2vh 0vh ;
+         
          
          
     }

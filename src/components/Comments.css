@@ -3,6 +3,9 @@
     flex-direction: column;
 }
 
+/* .commentsContainer input, textarea {
+    
+} */
 
 .commentsContainer h1 {
     align-self: center;

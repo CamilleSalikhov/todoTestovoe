@@ -96,15 +96,15 @@ result = [
             <h1>Development</h1>
             <h1>Done</h1>
           </div>
-        <div className=' table-container' >
+        <div className='table-container' >
           <Table status = 'queue' />
           <Table status = 'development' />
           <Table status = 'done' /> 
         </div>
         </DragDropContext>
         <div className='buttonContainer'> 
-        <button onClick={modalHandler} className='moduleButton'>Create new task</button>
-        <button onClick={searchModalHandler} className='moduleButton showFindButton'>Find task</button>
+        <button onClick={modalHandler} className='moduleButton'>New task</button>
+        <button onClick={searchModalHandler} className='moduleButton'>Find task</button>
         </div>
         {modalVisible && <Modal type='add' modalHandler={modalHandler} />} 
        </Route>

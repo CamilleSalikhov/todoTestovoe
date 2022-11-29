@@ -5,13 +5,13 @@
 }
 
 .taskPageItems {
-    font-size: inherit;
+     
      display: flex;
      align-self: center;
   flex-basis: 30vh;
     background-color: #fff;
     border-radius: 0 0 12px 12px;
-    padding: 15px 15px 20px;
+    padding: 1vh;
     box-shadow: 0 0 40px -10px rgb(0 0 0 / 40%); 
     width: 80vh;
     min-height: 80vh;
@@ -28,6 +28,9 @@
     margin-bottom: 2vh;
 }
 
+.taskFooter {
+    height: 40px;
+}
 
 
 
@@ -53,9 +56,9 @@ button {
 
 
 
-@media (max-width:400px) {
+@media (max-width:768px) {
     .taskPageItems {
-        width: 30vh;
+        width: 40vh;
         min-height: auto;
     }
 

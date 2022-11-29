@@ -107,6 +107,7 @@ const TaskPage = () => {
             
         </div>
         <Comments pageTask = {pageTask} />
+        <div className="taskFooter"></div>
         </>
     )
 }

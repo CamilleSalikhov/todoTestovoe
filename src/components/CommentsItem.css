@@ -22,6 +22,17 @@
 }
 
 
+@media (max-width:768px) {
+    .commentItem {
+        min-width: 40vh;
+         
+         
+         
+         
+    }
+}
+
+
 
 .flexContainer2 button {
     margin: 0;
