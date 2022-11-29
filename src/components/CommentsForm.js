@@ -78,7 +78,7 @@ const CommentsForm = ({id, closeReply, type, item}) => {
                     /> 
 
             <textarea  name="content" type="text" placeholder="" 
-            rows="10" cols="45" value={textArea} onChange={handleTextarea} required   >   
+            rows="10" cols="40" value={textArea} onChange={handleTextarea} required   >   
             </textarea>
 
             <div className='formButtons'>
