@@ -14,7 +14,7 @@ const TaskPageItems = ({pageTask, timestampToString, timePassed, type}) => {
                 <div>Дата окончания: <p>{pageTask.taskFinish}</p></div>
                 <div>Приоритет: {pageTask.taskPriority}</div>
                 {!(type === 'subtask') && <div>Текущий статус: <p>{pageTask.taskStatus}</p></div>}
-                <a target='_blank' rel="noopener noreferrer" href={pageTask.taskFile}>Загрузить вложенные файлы</a>
+                <a target='_blank' rel="noopener noreferrer" href={pageTask.taskFile}>Cкачать вложенные файлы</a>
 
 
 
