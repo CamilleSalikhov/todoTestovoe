@@ -1,5 +1,5 @@
 const TaskPageItems = ({pageTask, timestampToString, timePassed, type}) => {
-    console.log(pageTask.taskFile)
+    
      
 
     return (
