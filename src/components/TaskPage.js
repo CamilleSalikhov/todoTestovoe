@@ -24,7 +24,7 @@ const TaskPage = () => {
     
     if(!pageTask) {
         history.push('/notfound');
-         
+        console.log('пушим')
     }
  
      
