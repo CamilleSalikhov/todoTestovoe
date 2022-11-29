@@ -15,7 +15,7 @@ const Modal = ({modalHandler, type, id, pageTask}) => {
     const [taskDescription, setTaskDescription] = useState('');
     const [taskFinish, setTaskFinish] = useState('');
     const [taskPriority, setTaskPriority] = useState('');
-    const [taskFile, setTaskFile] = useState("Файл не выбран");
+    const [taskFile, setTaskFile] = useState("");
     const [fileName, setFileName] = useState('')
      
      
@@ -50,12 +50,13 @@ const Modal = ({modalHandler, type, id, pageTask}) => {
 
     const handleTaskChange = (e) => {
         e.preventDefault();
-        const currentFile = (taskFile ? taskFile : pageTask.taskFile)
-
+        console.log(taskFile)
+        const currentFile = (taskFile ? taskFile : pageTask.taskFile);
+        const currentDescription = (taskDescription.trim() === '' ? pageTask.taskDescription : taskDescription)
         dispatch(changeTask({
             taskNumber : taskNumber.trim(),
             taskHeader : taskHeader.trim(),
-            taskDescription : taskDescription,
+            taskDescription : currentDescription,
             taskFinish,
             taskPriority: taskPriority.trim(),
             taskFile:currentFile,
